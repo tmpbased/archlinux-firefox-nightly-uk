@@ -3,12 +3,12 @@
 
 _name=firefox
 _channel=nightly
-_lang=en-US
+_lang=uk
 pkgname=${_name}-${_channel}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=56.0a1
-pkgver=56.0a1.20170721
+pkgver=?
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -22,16 +22,18 @@ optdepends=('pulseaudio: audio support'
             'networkmanager: location detection via available WiFi networks'
             'speech-dispatcher: text-to-speech'
             'startup-notification: support for FreeDesktop Startup Notification')
-_url="https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central"
+_url0="https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central"
+_url="https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central-l10n"
+_src0="${_name}-${_version}.en-US.linux"
 _src="${_name}-${_version}.${_lang}.linux"
 _filename="$(date +%Y%m%d)-${_src}"
 source=("${pkgname}.desktop" 'vendor.js')
 source_i686=("${_filename}-i686.tar.bz2"::"${_url}/${_src}-i686.tar.bz2"
              "${_filename}-i686.tar.bz2.asc"::"${_url}/${_src}-i686.tar.bz2.asc"
-             "${_filename}-i686.txt"::"${_url}/${_src}-i686.txt")
+             "${_filename}-i686.txt"::"${_url0}/${_src0}-i686.txt")
 source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url}/${_src}-x86_64.tar.bz2"
                "${_filename}-x86_64.tar.bz2.asc"::"${_url}/${_src}-x86_64.tar.bz2.asc"
-               "${_filename}-x86_64.txt"::"${_url}/${_src}-x86_64.txt")
+               "${_filename}-x86_64.txt"::"${_url0}/${_src0}-x86_64.txt")
 sha512sums=(
     'b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
     'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
