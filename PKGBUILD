@@ -7,7 +7,7 @@ _lang=uk
 pkgname=${_name}-${_channel}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=58.0a1
+_version=59.0a1
 pkgver=?
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -60,11 +60,10 @@ package() {
   # Install icons
   SRC_LOC="${srcdir}"/${_name}/browser
   DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
-  for i in 16 32 48
+  for i in 16 32 48 64 128
   do
       install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
   done
-  install -Dm644 "${SRC_LOC}"/icons/mozicon128.png "${DEST_LOC}"/128x128/apps/${pkgname}.png
 
   # Disable auto-updates
   install -Dm644 "${srcdir}"/vendor.js -t "${pkgdir}"/${OPT_PATH}/browser/defaults/preferences
