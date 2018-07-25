@@ -27,7 +27,7 @@ _url="https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central-l10n"
 _src0="${_name}-${_version}.en-US.linux"
 _src="${_name}-${_version}.${_lang}.linux"
 _filename="$(date +%Y%m%d)-${_src}"
-source=("${pkgname}.desktop" 'vendor.js')
+source=("${pkgname}.desktop" 'policies.json')
 source_i686=("${_filename}-i686.tar.bz2"::"${_url}/${_src}-i686.tar.bz2"
              "${_filename}-i686.tar.bz2.asc"::"${_url}/${_src}-i686.tar.bz2.asc"
              "${_filename}-i686.txt"::"${_url0}/${_src0}-i686.txt")
@@ -36,7 +36,7 @@ source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url}/${_src}-x86_64.tar.bz2"
                "${_filename}-x86_64.txt"::"${_url0}/${_src0}-x86_64.txt")
 sha512sums=(
     'b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
-    'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
+    '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
 )
 sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
 sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
@@ -66,7 +66,7 @@ package() {
   done
 
   # Disable auto-updates
-  install -Dm644 "${srcdir}"/vendor.js -t "${pkgdir}"/${OPT_PATH}/browser/defaults/preferences
+  install -Dm644 "${srcdir}"/policies.json -t "${pkgdir}"/${OPT_PATH}/distribution
 
   # Use system-provided dictionaries
   rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
